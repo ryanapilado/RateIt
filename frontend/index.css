@@ -1,0 +1,15 @@
+form {
+    padding: 10px;
+}
+
+.panel {
+    padding: 10px;
+}
+
+.input-panel {
+    display: none;
+}
+
+#output {
+    display: none;
+}

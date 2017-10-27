@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Rate App</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./index.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="./index.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Top selection panel -->
+    <div class="row">
+        <div class="panel panel-default col-sm-offset-3 col-sm-6">
+            <h1>Store Rating App</h1><hr>
+            <p>Welcome to my assignment 2!</p>
+            <p>Please select an action and an object.</p>
+            <form id="method-select" class="btn-group" data-toggle="buttons">
+                <label class="radio-inline btn btn-primary">
+                <input type="radio" name="method" value="post">Create
+                </label>
+                <label class="radio-inline btn btn-primary">
+                <input type="radio" name="method" value="get">Read one
+                </label>
+                <label class="radio-inline btn btn-primary">
+                <input type="radio" name="method" value="getall">Read all/some
+                </label>
+                <label class="radio-inline btn btn-primary">
+                <input type="radio" name="method" value="put">Update
+                </label>
+                <label class="radio-inline btn btn-primary">
+                <input type="radio" name="method" value="delete">Delete
+                </label>
+                <label class="radio-inline btn btn-primary">
+                <input type="radio" name="method" value="aggr">Aggregate
+                </label>
+            </form>
+            <form id="object-select" class="btn-group" data-toggle="buttons">
+                <label class="radio-inline btn btn-primary">
+                <input type="radio" name="object" value="user">User
+                </label>
+                <label class="radio-inline btn btn-primary">
+                <input type="radio" name="object" value="store">Store
+                </label>
+                <label class="radio-inline btn btn-primary">
+                <input type="radio" name="object" value="review">Review
+                </label>
+            </form>
+        </div>
+    </div>
+
+    <!-- Input panel for creating a user -->
+    <div id="post-user" class='row input-panel'>
+        <div class="panel panel-default col-sm-offset-3 col-sm-6">
+            <p>Enter the information of the user you want to create. Fields left blank will be
+                given a default value. </p>
+            <form>
+                <div class="form-group">
+                <label for="usr">Username:</label>
+                <input type="text" class="form-control" id="post-user-username">
+                </div>
+                <div class="form-group">
+                <label for="pwd">Firstname:</label>
+                <input type="text" class="form-control" id="post-user-firstname">
+                </div>
+                <div class="form-group">
+                <label for="pwd">Lastname:</label>
+                <input type="text" class="form-control" id="post-user-lastname">
+                </div>
+                <div class="form-group">
+                <label for="pwd">Sex:</label>
+                <input type="text" class="form-control" id="post-user-sex">
+                </div>
+                <div class="form-group">
+                <label for="pwd">Age:</label>
+                <input type="number" class="form-control" id="post-user-age">
+                </div>
+            </form>
+            <button id="submit-post-user" type="button" class="btn btn-primary">Create User</button>
+        </div>
+    </div>
+
+    <!-- Input panel for reading a user -->
+    <div id="get-user" class='row input-panel'>
+        <div class="panel panel-default col-sm-offset-3 col-sm-6">
+            <p>Enter the ID and/or the username of the user you want to view.</p>
+            <form>
+                <div class="form-group">
+                <label for="usr">Username:</label>
+                <input type="text" class="form-control" id="get-user-username">
+                </div>
+                <div class="form-group">
+                <label for="pwd">ID:</label>
+                <input type="number" class="form-control" id="get-user-id">
+                </div>
+            </form>
+            <button id="submit-get-user" type="button" class="btn btn-primary">Search For User</button>
+        </div>
+    </div>
+
+    <!-- Input panel for reading all/some users -->
+    <div id="get-users" class='row input-panel'>
+        <div class="panel panel-default col-sm-offset-3 col-sm-6">
+            <p>Enter search parameters for users. If a field is left empty it will be ignored. If
+                all fields are left empty this will return all users.
+            </p>
+            <form>
+                <div class="form-group">
+                <label for="pwd">Firstname:</label>
+                <input type="text" class="form-control" id="get-users-firstname">
+                </div>
+                <div class="form-group">
+                <label for="pwd">Lastname:</label>
+                <input type="text" class="form-control" id="get-users-lastname">
+                </div>
+                <div class="form-group">
+                <label for="pwd">Sex:</label>
+                <input type="text" class="form-control" id="get-users-sex">
+                </div>
+                <div class="form-group">
+                <label for="pwd">Age:</label>
+                <input type="number" class="form-control" id="get-users-age">
+                </div>
+            </form>
+            <button id="submit-get-users" type="button" class="btn btn-primary">Search For Users</button>
+        </div>
+    </div>
+
+    <!-- Input panel for deleting a user -->
+    <div id="delete-user" class='row input-panel'>
+        <div class="panel panel-default col-sm-offset-3 col-sm-6">
+            <p>Enter the ID and/or the username of the user you want to delete.</p>
+            <form>
+                <div class="form-group">
+                <label for="pwd">ID:</label>
+                <input type="number" class="form-control" id="delete-user-id">
+                </div>
+            </form>
+            <button id="submit-delete-user" type="button" class="btn btn-primary">Delete User</button>
+        </div>
+    </div>
+
+    <!-- Input panel for updating a user -->
+    <div id="put-user" class='row input-panel'>
+        <div class="panel panel-default col-sm-offset-3 col-sm-6">
+            <form>
+                <p>Enter the ID of the user to change.</p>
+                <div class="form-group">
+                <label for="pwd">ID:</label>
+                <input type="number" class="form-control" id="put-user-id">
+                </div>
+                <p>Enter the information to change. If a field is left blank, it will not change.</p>
+                <div class="form-group">
+                <label for="pwd">Firstname:</label>
+                <input type="text" class="form-control" id="put-user-firstname">
+                </div>
+                <div class="form-group">
+                <label for="pwd">Lastname:</label>
+                <input type="text" class="form-control" id="put-user-lastname">
+                </div>
+                <div class="form-group">
+                <label for="pwd">Sex:</label>
+                <input type="text" class="form-control" id="put-user-sex">
+                </div>
+                <div class="form-group">
+                <label for="pwd">Age:</label>
+                <input type="number" class="form-control" id="put-user-age">
+                </div>
+            </form>
+            <button id="submit-put-user" type="button" class="btn btn-primary">Modify User</button>
+        </div>
+    </div>
+
+    <!-- Input panel for creating a store -->
+    <div id="post-store" class='row input-panel'>
+        <div class="panel panel-default col-sm-offset-3 col-sm-6">
+            <p>Enter the information of the store you want to create. A storename is required.
+                Other fields left blank will be given a default value. </p>
+            <form>
+                <div class="form-group">
+                <label for="usr">Storename:</label>
+                <input type="text" class="form-control" id="post-store-storename">
+                </div>
+                <div class="form-group">
+                <label for="pwd">Category:</label>
+                <input type="text" class="form-control" id="post-store-category">
+                </div>
+                <div class="form-group">
+                <label for="pwd">Address:</label>
+                <input type="text" class="form-control" id="post-store-address">
+                </div>
+            </form>
+            <button id="submit-post-store" type="button" class="btn btn-primary">Create Store</button>
+        </div>
+    </div>
+
+    <!-- Input panel for reading a store -->
+    <div id="get-store" class='row input-panel'>
+        <div class="panel panel-default col-sm-offset-3 col-sm-6">
+            <p>Enter the ID of the store you want to view.</p>
+            <form>
+                <div class="form-group">
+                <label for="usr">ID:</label>
+                <input type="number" class="form-control" id="get-store-id">
+                </div>
+            </form>
+            <button id="submit-get-store" type="button" class="btn btn-primary">Search For Store</button>
+        </div>
+    </div>
+
+    <!-- Input panel for deleting a store -->
+    <div id="delete-store" class='row input-panel'>
+        <div class="panel panel-default col-sm-offset-3 col-sm-6">
+            <p>Enter the ID of the store you want to delete.</p>
+            <form>
+                <div class="form-group">
+                <label for="pwd">ID:</label>
+                <input type="number" class="form-control" id="delete-store-id">
+                </div>
+            </form>
+            <button id="submit-delete-store" type="button" class="btn btn-primary">Delete Store</button>
+        </div>
+    </div>
+
+    <!-- Input panel for updating a store -->
+    <div id="put-store" class='row input-panel'>
+        <div class="panel panel-default col-sm-offset-3 col-sm-6">
+            <p>Enter the ID of the store you want to update.</p>
+            <form>
+            <div class="form-group">
+            <label for="pwd">ID:</label>
+            <input type="number" class="form-control" id="put-store-id">
+            </div>
+            <p>Enter the information to change. If a field is left blank, it will not change.</p>
+            <div class="form-group">
+            <label for="pwd">Storename:</label>
+            <input type="text" class="form-control" id="put-store-storename">
+            </div>
+            <div class="form-group">
+            <label for="pwd">Category:</label>
+            <input type="text" class="form-control" id="put-store-category">
+            </div>
+            <div class="form-group">
+            <label for="pwd">Address:</label>
+            <input type="text" class="form-control" id="put-store-address">
+            </div>
+            </form>
+            <button id="submit-put-store" type="button" class="btn btn-primary">Update Store</button>
+        </div>
+    </div>
+
+    <!-- Input panel for reading all/some stores -->
+    <div id="get-stores" class='row input-panel'>
+        <div class="panel panel-default col-sm-offset-3 col-sm-6">
+            <p>Enter search parameters for stores. If a field is left empty it will be ignored. If
+                all fields are left empty this will return all stores.
+            </p>
+            <form>
+                <div class="form-group">
+                <label for="pwd">Storename:</label>
+                <input type="text" class="form-control" id="get-stores-storename">
+                </div>
+                <div class="form-group">
+                <label for="pwd">Category:</label>
+                <input type="text" class="form-control" id="get-stores-category">
+                </div>
+            </form>
+            <button id="submit-get-stores" type="button" class="btn btn-primary">Search For Stores</button>
+        </div>
+    </div>
+
+    <!-- Input panel for creating a review -->
+    <div id="post-review" class='row input-panel'>
+        <div class="panel panel-default col-sm-offset-3 col-sm-6">
+            <p>Enter the information of the review you want to create. UserID, StoreID, and Rating are required. </p>
+            <form>
+                <div class="form-group">
+                <label for="usr">userID:</label>
+                <input type="number" class="form-control" id="post-review-userid">
+                </div>
+                <div class="form-group">
+                <label for="pwd">storeID:</label>
+                <input type="number" class="form-control" id="post-review-storeid">
+                </div>
+                <div class="form-group">
+                <label for="pwd">Rating:</label>
+                <input type="number" class="form-control" id="post-review-rating">
+                </div>
+                <div class="form-group">
+                <label for="pwd">Comment:</label>
+                <input type="text" class="form-control" id="post-review-comment">
+                </div>
+            </form>
+            <button id="submit-post-review" type="button" class="btn btn-primary">Create Review</button>
+        </div>
+    </div>
+
+    <!-- Input panel for reading a review -->
+    <div id="get-review" class='row input-panel'>
+        <div class="panel panel-default col-sm-offset-3 col-sm-6">
+            <p>Enter the ID of the review you want to view.</p>
+            <form>
+                <div class="form-group">
+                <label for="usr">ID:</label>
+                <input type="number" class="form-control" id="get-review-id">
+                </div>
+            </form>
+            <button id="submit-get-review" type="button" class="btn btn-primary">Search For Store</button>
+        </div>
+    </div>
+
+    <!-- Input panel for deleting a review -->
+    <div id="delete-review" class='row input-panel'>
+        <div class="panel panel-default col-sm-offset-3 col-sm-6">
+            <form>
+                <p>Enter the ID of the review you want to delete.
+                </p>
+                <div class="form-group">
+                <label for="pwd">ID:</label>
+                <input type="number" class="form-control" id="delete-review-id">
+                </div>
+                <button id="submit-delete-review-1" type="button" class="btn btn-primary">Delete Review</button><br>
+                <p>Alternatively, enter a StoreID and/or UserID. This will delete all reviews with those values.
+                </p>
+                <div class="form-group">
+                <label for="pwd">StoreID:</label>
+                <input type="number" class="form-control" id="delete-review-storeid">
+                </div>
+                <div class="form-group">
+                <label for="pwd">UserID:</label>
+                <input type="number" class="form-control" id="delete-review-userid">
+                </div>
+                <button id="submit-delete-review-2" type="button" class="btn btn-primary">Delete Review</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Input panel for updating a review -->
+    <div id="put-review" class='row input-panel'>
+        <div class="panel panel-default col-sm-offset-3 col-sm-6">
+            <p>Enter the ID of the review you want to update.</p>
+            <form>
+            <div class="form-group">
+            <label for="pwd">ID:</label>
+            <input type="number" class="form-control" id="put-review-id">
+            </div>
+            <p>Enter the information to change. If a field is left blank, it will not change.</p>
+            <div class="form-group">
+            <label for="pwd">Rating:</label>
+            <input type="number" class="form-control" id="put-review-rating">
+            </div>
+            <div class="form-group">
+            <label for="pwd">Comment:</label>
+            <input type="text" class="form-control" id="put-review-comment">
+            </div>
+            </form>
+            <button id="submit-put-review" type="button" class="btn btn-primary">Update Review</button>
+        </div>
+    </div>
+
+    <!-- Input panel for getting all/some reviews -->
+    <div id="get-reviews" class='row input-panel'>
+        <div class="panel panel-default col-sm-offset-3 col-sm-6">
+            <p>Enter search parameters for reviews. You must specify at least one field.
+            </p>
+            <form>
+                <div class="form-group">
+                <label for="pwd">StoreID:</label>
+                <input type="number" class="form-control" id="get-reviews-storeid">
+                </div>
+                <div class="form-group">
+                <label for="pwd">UserID:</label>
+                <input type="number" class="form-control" id="get-reviews-userid">
+                </div>
+            </form>
+            <button id="submit-get-reviews" type="button" class="btn btn-primary">Search For Reviews</button>
+        </div>
+    </div>
+
+
+    <!-- output panel -->
+    <div class='row'>
+        <div id="output" class="panel panel-default col-sm-offset-3 col-sm-6">
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

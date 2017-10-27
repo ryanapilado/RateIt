@@ -1,0 +1,29 @@
+{
+  "name": "a2-apilador",
+  "version": "1.0.0",
+  "description": "With the rising popularity amd prevalence of rating apps, ratings have become an important part of user experience. We rate everything from restaurants to games to [people](https://www.youtube.com/watch?v=CI4kiPaKfAE). For this assignment you will be creating a simple app that rates stores. Your job is to implement a RESTful API that can digest ratings and map them to stores that should be able to perform CRUD (Create, Read, Update, Delete) operations. For simplicity, you are not required to implement user authentication and we encourage you to use simple functions/methods. The objective is to give you a hands-on experience with full stack application development. You will NOT be working in teams; individual submissions will be required.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CSC309-spring2017/a2-apilador.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CSC309-spring2017/a2-apilador/issues"
+  },
+  "homepage": "https://github.com/CSC309-spring2017/a2-apilador#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "bootstrap": "^3.3.7",
+    "express": "^4.15.2",
+    "mongodb": "^2.2.25",
+    "mongodb-autoincrement": "^1.0.1",
+    "mongoose": "^4.9.1"
+  }
+}
