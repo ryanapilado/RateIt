@@ -3,7 +3,7 @@ var app = express();
 
 var mongo = require('./mongo.js');
 mongo.connectToServer(function (err) {
-    app.listen(3000, function () {
+    app.listen(process.env.PORT || 3000, function () {
         console.log('App listening on 3000...');
     });
 });
